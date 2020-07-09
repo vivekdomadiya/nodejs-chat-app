@@ -1,0 +1,164 @@
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+body {
+  padding-top: 4.4rem;
+}
+
+#room {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  color: white;
+  background: #333744;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 10;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 89vh;
+  margin-left: 250px;
+  vertical-align: top;
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 24px 24px 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: calc(100vh - 9.4rem);
+}
+
+.formContainer {
+  display: flex;
+  flex-shrink: 0;
+  height: 5rem;
+  padding: 20px 10px;
+  background-color: #f0f0f0;
+}
+
+.formContainer input {
+  height: 38px;
+  padding-left: 20px;
+  border-radius: 21px;
+}
+
+.formContainer button {
+  height: 38px;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.userInfo {
+  font-weight: 400;
+  font-size: 22px;
+  background: #2c2f3a;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.userList {
+  list-style-type: none;
+  font-weight: 400;
+  font-size: 25px;
+  padding: 12px 24px 0;
+}
+
+.message {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 20px;
+  padding: 8px 15px;
+  border: solid 1px #d7d7d7;
+  border-radius: 10px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.message::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -11px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #d7d7d7;
+  top: 40%;
+}
+.message::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fff;
+  top: 40%;
+}
+
+.message p {
+  margin-bottom: 0.5rem;
+}
+
+.message .senderName {
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.message .meta {
+  color: #777;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  .content {
+    margin-left: 0;
+  }
+  .messages {
+    min-height: calc(92.3vh - 9.4rem);
+  }
+}

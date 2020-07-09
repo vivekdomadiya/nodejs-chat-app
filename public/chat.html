@@ -7,65 +7,86 @@
   <title>Chat App</title>
   <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
 
-  <link rel="stylesheet" href="/css/styles.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body>
-  <div class="chat">
-    <div id="sidebar" class="chat__sidebar">
 
-    </div>
-    <div class="chat__main">
-      <div id="messages" class="chat__messages"></div>
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <button class="navbar-toggler mr-auto" type="button" id="sidebarToggler">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="compose">
-        <form id="message-form">
-          <input type="text" id="message" placeholder="Message" required autocomplete="off">
-          <button type="submit" id="sendMessageBtn">Send Message</button>
-        </form>
-        <button id="sendLocationBtn">Send Location</button>
+    <a class="navbar-brand" id="room" href="#">Room</a>
+
+    <form class="form-inline ml-auto">
+      <button class="btn btn-outline-light" id="quit" type="button">&times;</button>
+    </form>
+  </nav>
+
+  <section class="chat" id="chat">
+    <aside id="sidebar" class="sidebar" role="navigation">
+      <ul class="nav flex-column">
+
+        <li class="nav-item userInfo">
+          Users
+        </li>
+
+        <ul class="userList" id="userList"></ul>
+
+      </ul>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="content" id="content">
+      <div id="messages" class="messages"></div>
+
+      <div class="formContainer">
+        <input type="text" class="form-control" id="message" placeholder="Type a message..." required autofocus
+          autocomplete="off">
+        <button class="btn" id="sendMessageBtn"><img src="https://img.icons8.com/small/32/000000/filled-sent.png"
+            alt="Send" width="30px" height="30px" title="Send Message" /></button>
+        <button class="btn" id="sendLocationBtn"><img src="/img/location.png" alt="location" width="30px" height="30px"
+            title="Share Location"></button>
       </div>
-
-
     </div>
-  </div>
+  </section>
 
 
-  <script id="message-templete" type="text/html">
+  <script id="messageTemplete" type="text/html">
     <div class="message">
       <p>
-        <span class="message__name">{{username}}</span>
-        <span class="message__meta">{{createAt}}</span>
+        <span class="senderName">{{username}}</span>
+        <span class="meta">{{createAt}}</span>
       </p>
       <p>{{message}}</p>
     </div>
   </script>
 
-  <script id="location-templete" type="text/html">
+  <script id="locationTemplete" type="text/html">
     <div class="message">
       <p>
-        <span class="message__name">{{username}}</span>
-        <span class="message__meta">{{createAt}}</span>
+        <span class="senderName">{{username}}</span>
+        <span class="meta">{{createAt}}</span>
       </p>
       <p><a href="{{url}}" target="_blank">My Current location</a></p>
     </div>
   </script>
 
-  <script id="sidebar-templete" type="text/html">
-    <h2 class="room-title">{{room}}</h2>
-    <h3 class="list-title">users</h3>
-    <ul class="users">
+  <script id="userListTemplete" type="text/html">
       {{#users}}
         <li>{{username}}</li>
       {{/users}}
-    </ul>
   </script>
 
+  <script src="/js/jquery.min.js"></script>
   <script src="/js/mustache.min.js"></script>
   <script src="/js/moment.min.js"></script>
-  <script src="/js/qs.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/chat.js"></script>
+  <script src="/js/custom.js"></script>
 </body>
 
 </html>
