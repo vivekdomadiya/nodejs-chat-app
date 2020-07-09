@@ -71,7 +71,11 @@
         <span class="senderName">{{username}}</span>
         <span class="meta">{{createAt}}</span>
       </p>
-      <p><a href="{{url}}" target="_blank">My Current location</a></p>
+      <p>
+        <a href="{{url}}" target="_blank">
+          <iframe width="300" height="300" src="{{url}}&z=10&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </a>
+      </p>
     </div>
   </script>
 
