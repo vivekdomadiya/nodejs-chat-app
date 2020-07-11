@@ -12,10 +12,13 @@ const room = urlParams.get("room");
 
 socket.emit("join", { username, room }, (error) => {
   if (error) {
-    $("#userError").text(error);
-    $("#userModalBtn").click();
+    $("#userModal").modal("show");
   }
   $("#room").text("Room " + room);
+});
+
+$("#userModal").on("hide.bs.modal", () => {
+  return false;
 });
 
 socket.on("message", (message) => {
