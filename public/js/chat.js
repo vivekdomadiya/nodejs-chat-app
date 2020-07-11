@@ -12,8 +12,8 @@ const room = urlParams.get("room");
 
 socket.emit("join", { username, room }, (error) => {
   if (error) {
-    alert(error);
-    location.href = "/";
+    $("#userError").text(error);
+    $("#userModalBtn").click();
   }
   $("#room").text("Room " + room);
 });
@@ -50,6 +50,11 @@ $("#sendMessageBtn").click(() => {
   $("#sendMessageBtn").attr("disabled", "disabled");
   const text = $("#message").val();
   $("#message").val("");
+
+  if (!text) {
+    $("#sendMessageBtn").removeAttr("disabled");
+    return false;
+  }
 
   socket.emit("sendMessage", text, () => {
     console.log("Message delevered!");
@@ -92,10 +97,5 @@ $("#message").keypress((e) => {
 $("#sidebarToggler, #overlay").click(() => {
   $("#overlay").toggle("slow");
   $("#sidebar").toggle("slow");
-});
-
-$("#quit").click(() => {
-  if (confirm("Are u sure want to leave this room?")) {
-    location.href = "/";
-  }
+  $("#quit").toggle();
 });
