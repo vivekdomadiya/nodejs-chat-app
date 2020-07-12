@@ -1,3 +1,16 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #333333;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px !important;
   height: 6px !important;
@@ -10,13 +23,36 @@
   background: hsla(0, 0%, 100%, 0.1);
 }
 
-body {
-  padding-top: 4.4rem;
+/* Join Page style */
+.centeredBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#room {
+.centeredBox .heading {
+  font-size: 2.5em;
+  color: #f8f9fa;
+  margin-bottom: 1.5rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+
+.centeredBox input {
+  font-size: 20px;
+}
+
+/* Room Page style */
+.brand {
+  color: #fff !important;
+  cursor: pointer;
   font-weight: 500;
   font-size: 30px;
+}
+
+.chat {
+  padding-top: 4.4rem;
 }
 
 .sidebar {
@@ -29,7 +65,8 @@ body {
   background: #333744;
   overflow-x: hidden;
   overflow-y: scroll;
-  z-index: 10;
+  z-index: 20;
+  transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
 }
 
 .overlay {
@@ -38,34 +75,58 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 5;
-  opacity: 1;
+  z-index: 10;
+  opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 
-.overlay.active {
-  display: block;
-  opacity: 1;
+.userInfo {
+  position: fixed;
+  width: 250px;
+  height: 80px;
+  font-weight: 400;
+  font-size: 22px;
+  background: #2c2f3a;
+  padding: 24px;
+}
+
+.userList {
+  list-style-type: none;
+  font-weight: 400;
+  font-size: 25px;
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+}
+
+.userList li {
+  padding: 10px 20px;
+}
+
+.userList li:nth-child(even) {
+  background: #2c2f3a;
 }
 
 .content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-height: 89vh;
   margin-left: 250px;
   vertical-align: top;
 }
 
-.messages {
+.messageBox {
   flex-grow: 1;
   padding: 24px 24px 0;
+  margin-bottom: 80px;
   overflow-x: hidden;
   overflow-y: scroll;
   min-height: calc(100vh - 9.4rem);
 }
 
-.formContainer {
+.bottomBox {
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 250px);
   display: flex;
   flex-shrink: 0;
   height: 5rem;
@@ -73,31 +134,16 @@ body {
   background-color: #f0f0f0;
 }
 
-.formContainer input {
+.bottomBox input {
   height: 38px;
   padding-left: 20px;
   border-radius: 21px;
 }
 
-.formContainer button {
+.bottomBox button {
   height: 38px;
   margin-left: 10px;
   padding: 0;
-}
-
-.userInfo {
-  font-weight: 400;
-  font-size: 22px;
-  background: #2c2f3a;
-  padding: 24px;
-  margin-top: 16px;
-}
-
-.userList {
-  list-style-type: none;
-  font-weight: 400;
-  font-size: 25px;
-  padding: 12px 24px 0;
 }
 
 .message {
@@ -155,10 +201,26 @@ body {
   .sidebar {
     display: none;
   }
+  .sidebar.active {
+    display: block;
+  }
+  .overlay.active {
+    display: block;
+    opacity: 1;
+  }
+  #quit {
+    display: none;
+  }
+  #quit.active {
+    display: inline-block;
+  }
   .content {
     margin-left: 0;
   }
-  .messages {
+  .messageBox {
     min-height: calc(92.3vh - 9.4rem);
+  }
+  .bottomBox {
+    width: 100vw;
   }
 }

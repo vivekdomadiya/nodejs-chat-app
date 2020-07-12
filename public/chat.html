@@ -18,33 +18,30 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" id="room" href="#">Room</a>
+    <a class="navbar-brand brand" id="room">Room</a>
 
     <form class="form-inline ml-auto">
-      <button type="button" id="quit" class="btn btn-danger" data-toggle="modal"
+      <button type="button" id="quit" class="btn btn-danger active" data-toggle="modal"
         data-target="#leaveModal">&times;</button>
     </form>
   </nav>
 
-  <section class="chat" id="chat">
+  <section class="chat">
     <aside id="sidebar" class="sidebar" role="navigation">
       <ul class="nav flex-column">
-
         <li class="nav-item userInfo">
           Users
         </li>
-
         <ul class="userList" id="userList"></ul>
-
       </ul>
     </aside>
 
     <div class="overlay" id="overlay"></div>
 
     <div class="content" id="content">
-      <div id="messages" class="messages"></div>
+      <div id="messages" class="messageBox"></div>
 
-      <div class="formContainer">
+      <div class="bottomBox">
         <input type="text" class="form-control" id="message" placeholder="Type a message..." required autofocus
           autocomplete="off">
         <button class="btn" id="sendMessageBtn"><img src="https://img.icons8.com/small/32/000000/filled-sent.png"
@@ -74,7 +71,7 @@
       </p>
       <p>
         <a href="{{url}}" target="_blank">
-          <iframe width="300" height="300" src="{{url}}&z=10&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+          <iframe width="280" height="280" src="{{url}}&z=10&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </a>
       </p>
     </div>
@@ -110,14 +107,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">User is in Room</h4>
-          <a type="button" href="/" class="close">&times;</a>
+          <a type="button" href="#" class="close">&times;</a>
         </div>
 
         <div class="modal-body">
           <h6>Username is in use! Please try another username.</h6>
         </div>
         <div class="modal-footer">
-          <a type="button" href="/" class="btn btn-danger">Ok</a>
+          <a type="button" href="#" class="btn btn-danger">Ok</a>
         </div>
       </div>
     </div>

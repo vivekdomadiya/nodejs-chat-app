@@ -2,7 +2,7 @@ const socket = io();
 
 const showMessage = (msg) => {
   $("#messages").append(msg);
-  $("#messages").scrollTop($("#messages").prop("scrollHeight"));
+  $(window).scrollTop($("#messages").prop("scrollHeight"));
 };
 
 // Option
@@ -12,6 +12,7 @@ const room = urlParams.get("room");
 
 socket.emit("join", { username, room }, (error) => {
   if (error) {
+    $("#userModal a").attr("href", `/?room=${room}`);
     $("#userModal").modal("show");
   }
   $("#room").text("Room " + room);
@@ -98,7 +99,5 @@ $("#message").keypress((e) => {
 });
 
 $("#sidebarToggler, #overlay").click(() => {
-  $("#overlay").toggle("slow");
-  $("#sidebar").toggle("slow");
-  $("#quit").toggle();
+  $("#overlay, #sidebar, #quit").toggleClass("active");
 });
