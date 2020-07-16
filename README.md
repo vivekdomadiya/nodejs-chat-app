@@ -2,7 +2,7 @@
 
 A web Chat room where people can send message, location to group of people.
 
-[(◔‿◔)!☞ Live Demo](https://nodejs-chat-app.vivekdomadia11.repl.co/)
+[(◔‿◔)!☞ Live Demo](https://chatapp.vivekdomadia.engineer/)
 
 #### Platforms / Technologies
 
